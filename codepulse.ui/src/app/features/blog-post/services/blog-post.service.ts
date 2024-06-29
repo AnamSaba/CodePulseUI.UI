@@ -16,11 +16,7 @@ export class BlogPostService {
     private cookieService: CookieService) { }
 
   createBlogPost(data: AddBlogPost): Observable<BlogPost>{
-    return this.http.post<BlogPost>(`${environment.apiBaseUrl}/api/blogposts`,data, {
-      headers:{
-        'Authorization': this.cookieService.get('Authorization')
-      }
-    });
+    return this.http.post<BlogPost>(`${environment.apiBaseUrl}/api/blogposts?addAuth=true`,data);
   }
 
   getAllBlogPost(): Observable<BlogPost[]>{
@@ -32,19 +28,11 @@ export class BlogPostService {
   }
 
   updateBlogPost(id: string, updatedBlogPost: UpdateBlogPost): Observable<BlogPost>{
-    return this.http.put<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${id}`, updatedBlogPost, {
-      headers:{
-        'Authorization': this.cookieService.get('Authorization')
-      }
-    });
+    return this.http.put<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${id}?addAuth=true`, updatedBlogPost);
   }
 
   deleteBlogPost(id: string): Observable<BlogPost> {
-    return this.http.delete<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${id}`, {
-      headers:{
-        'Authorization': this.cookieService.get('Authorization')
-      }
-    });
+    return this.http.delete<BlogPost>(`${environment.apiBaseUrl}/api/blogposts/${id}?addAuth=true`);
   }
 
   getBlogPostByUrlHandle(urlHandle: string): Observable<BlogPost> {

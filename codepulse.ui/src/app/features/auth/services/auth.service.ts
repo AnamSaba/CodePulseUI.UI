@@ -30,7 +30,7 @@ export class AuthService {
       this.$user.next(user);
 
       localStorage.setItem('user-email', user.email);
-      localStorage.setItem('user.roles', user.roles.join(','));
+      localStorage.setItem('user-roles', user.roles.join(','));
   }
 
   user(): Observable<User | undefined> {
@@ -44,8 +44,8 @@ export class AuthService {
   }
 
   getUser(): User | undefined {
-      const email = localStorage.getItem('user.email');
-      const roles = localStorage.getItem('user.roles');
+      const email = localStorage.getItem('user-email');
+      const roles = localStorage.getItem('user-roles');
 
       if(email && roles)
         {
