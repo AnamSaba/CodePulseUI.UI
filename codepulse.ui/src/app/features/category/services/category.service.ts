@@ -67,7 +67,7 @@ export class CategoryService {
   
 
   getCategoryCount() : Observable<number>{
-    return this.http.get<number>(`${environment.apiBaseUrl}/api/categories/count?addAuth=true`);
+    return this.http.get<number>(`${environment.apiBaseUrl}/api/categories/count`);
   }
 
 }
